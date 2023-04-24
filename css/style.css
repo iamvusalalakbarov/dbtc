@@ -69,11 +69,9 @@ body header .log-buttons a:hover {
 }
 body main {
   flex: 1;
-  padding: 16px;
-}
-body main.home {
   display: grid;
   place-items: center;
+  padding: 32px 0;
 }
 body main.home h1 {
   text-align: center;
@@ -108,13 +106,6 @@ body main.home a:hover {
   color: #fff;
   background: #285680;
 }
-body main.log-in, body main.sign-up {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 32px 0;
-}
 body main.log-in h3, body main.sign-up h3 {
   font-size: 24px;
   color: #285680;
@@ -138,7 +129,30 @@ body main.log-in form label input, body main.sign-up form label input {
   border: 1px solid rgba(70, 79, 93, 0.2);
   font-size: 14px;
 }
-body main.log-in form button, body main.sign-up form button {
+body main.contact h1 {
+  color: #285680;
+  margin-bottom: 32px;
+}
+body main.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 30%;
+}
+body main.contact form input,
+body main.contact form textarea {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(70, 79, 93, 0.2);
+}
+body main.contact form textarea {
+  height: 96px;
+  resize: none;
+}
+body main button {
   display: block;
   width: 100%;
   padding: 8px 0;
@@ -149,7 +163,7 @@ body main.log-in form button, body main.sign-up form button {
   transition: 200ms background-color ease-in;
   cursor: pointer;
 }
-body main.log-in form button:hover, body main.sign-up form button:hover {
+body main button:hover {
   background: #1e4161;
 }
 body footer .footer-top {
