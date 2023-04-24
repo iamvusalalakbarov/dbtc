@@ -87,6 +87,50 @@ body {
 
   main {
     flex: 1;
+    padding: 16px;
+
+    &.home {
+      display: grid;
+      place-items: center;
+      h1 {
+        text-align: center;
+        color: $myBlue;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 128px;
+
+        img {
+          height: 96px;
+        }
+
+        p {
+          max-width: 320px;
+          font-size: 20px;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+
+      a {
+        padding: 8px 16px;
+        border: 1px solid $myBlue;
+        border-radius: 4px;
+        font-size: 20px;
+        font-weight: 500;
+        color: $myBlue;
+        background: #fff;
+        transition: 200ms all;
+
+        &:hover {
+          color: #fff;
+          background: $myBlue;
+        }
+      }
+    }
   }
 
   footer {

@@ -69,6 +69,44 @@ body header .log-buttons a:hover {
 }
 body main {
   flex: 1;
+  padding: 16px;
+}
+body main.home {
+  display: grid;
+  place-items: center;
+}
+body main.home h1 {
+  text-align: center;
+  color: #285680;
+}
+body main.home div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 128px;
+}
+body main.home div img {
+  height: 96px;
+}
+body main.home div p {
+  max-width: 320px;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+}
+body main.home a {
+  padding: 8px 16px;
+  border: 1px solid #285680;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #285680;
+  background: #fff;
+  transition: 200ms all;
+}
+body main.home a:hover {
+  color: #fff;
+  background: #285680;
 }
 body footer .footer-top {
   display: flex;
