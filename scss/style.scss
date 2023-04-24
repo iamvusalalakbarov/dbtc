@@ -92,6 +92,7 @@ body {
     &.home {
       display: grid;
       place-items: center;
+
       h1 {
         text-align: center;
         color: $myBlue;
@@ -128,6 +129,59 @@ body {
         &:hover {
           color: #fff;
           background: $myBlue;
+        }
+      }
+    }
+
+    &.log-in {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 0;
+
+      h3 {
+        font-size: 24px;
+        color: $myBlue;
+        margin-bottom: 16px;
+      }
+
+      form {
+        label {
+          display: block;
+          color: $myGray;
+          margin-bottom: 16px;
+
+          span {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+          }
+
+          input {
+            width: 400px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba($myGray, 0.2);
+            font-size: 14px;
+          }
+        }
+
+        button {
+          display: block;
+          width: 100%;
+          padding: 8px 0;
+          border-radius: 4px;
+          font-size: 16px;
+          color: #fff;
+          background: $myBlue;
+          transition: 200ms background-color ease-in;
+          cursor: pointer;
+
+          &:hover {
+            background: darken($myBlue, 8);
+          }
         }
       }
     }
