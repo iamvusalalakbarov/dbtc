@@ -14,6 +14,11 @@ a {
   color: #000;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body header {
   display: flex;
   justify-content: space-between;
@@ -61,4 +66,62 @@ body header .log-buttons a {
 body header .log-buttons a:hover {
   color: #285680;
   background: #fff;
+}
+body main {
+  flex: 1;
+}
+body footer .footer-top {
+  display: flex;
+  gap: 128px;
+  padding: 32px;
+  border-top: 8px solid #285680;
+  background: #464f5d;
+}
+body footer .footer-top .logo {
+  margin-right: auto;
+}
+body footer .footer-top .logo a {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+}
+body footer .footer-top ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+body footer .footer-top ul li a {
+  font-size: 14px;
+  color: #fff;
+  transition: 200ms all;
+}
+body footer .footer-top ul li a:hover {
+  text-decoration: underline;
+}
+body footer .footer-top .social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body footer .footer-top .social-buttons a {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  color: #fff;
+  transition: 200ms all;
+}
+body footer .footer-top .social-buttons a:hover {
+  color: #464f5d;
+  background: #fff;
+}
+body footer .footer-top .social-buttons a i {
+  font-size: 18px;
+}
+body footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
 }/*# sourceMappingURL=style.css.map */
