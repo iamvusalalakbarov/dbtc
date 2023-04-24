@@ -108,37 +108,37 @@ body main.home a:hover {
   color: #fff;
   background: #285680;
 }
-body main.log-in {
+body main.log-in, body main.sign-up {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 32px 0;
 }
-body main.log-in h3 {
+body main.log-in h3, body main.sign-up h3 {
   font-size: 24px;
   color: #285680;
   margin-bottom: 16px;
 }
-body main.log-in form label {
+body main.log-in form label, body main.sign-up form label {
   display: block;
   color: #464f5d;
   margin-bottom: 16px;
 }
-body main.log-in form label span {
+body main.log-in form label span, body main.sign-up form label span {
   display: block;
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 8px;
 }
-body main.log-in form label input {
+body main.log-in form label input, body main.sign-up form label input {
   width: 400px;
   padding: 8px 12px;
   border-radius: 4px;
   border: 1px solid rgba(70, 79, 93, 0.2);
   font-size: 14px;
 }
-body main.log-in form button {
+body main.log-in form button, body main.sign-up form button {
   display: block;
   width: 100%;
   padding: 8px 0;
@@ -149,7 +149,7 @@ body main.log-in form button {
   transition: 200ms background-color ease-in;
   cursor: pointer;
 }
-body main.log-in form button:hover {
+body main.log-in form button:hover, body main.sign-up form button:hover {
   background: #1e4161;
 }
 body footer .footer-top {
