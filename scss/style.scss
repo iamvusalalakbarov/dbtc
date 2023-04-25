@@ -193,21 +193,38 @@ body {
       }
     }
 
-    button {
-        display: block;
-        width: 100%;
-        padding: 8px 0;
-        border-radius: 4px;
-        font-size: 16px;
-        color: #fff;
-        background: $myBlue;
-        transition: 200ms background-color ease-in;
-        cursor: pointer;
+    &.about {
+      h1 {
+        color: $myBlue;
+      }
 
-        &:hover {
-          background: darken($myBlue, 8);
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 16px;
+
+        p {
+          line-height: 20px;
         }
       }
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 8px 0;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #fff;
+      background: $myBlue;
+      transition: 200ms background-color ease-in;
+      cursor: pointer;
+
+      &:hover {
+        background: darken($myBlue, 8);
+      }
+    }
   }
 
   footer {

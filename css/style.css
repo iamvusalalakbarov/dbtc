@@ -152,6 +152,18 @@ body main.contact form textarea {
   height: 96px;
   resize: none;
 }
+body main.about h1 {
+  color: #285680;
+}
+body main.about div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+body main.about div p {
+  line-height: 20px;
+}
 body main button {
   display: block;
   width: 100%;
