@@ -1,15 +1,15 @@
 <footer>
     <div class="footer-top">
         <div class="logo">
-            <a href="#">DBTC</a>
+            <a href="index.php">DBTC</a>
         </div>
 
         <ul>
             <li>
-                <a href="#">About Us</a>
+                <a href="about">About Us</a>
             </li>
             <li>
-                <a href="#">Contact Us</a>
+                <a href="contact">Contact Us</a>
             </li>
         </ul>
 

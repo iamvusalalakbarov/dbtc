@@ -13,13 +13,13 @@
 <body>
     <header>
         <div class="logo">
-            <a href="">DBTC</a>
+            <a href="index.php">DBTC</a>
         </div>
 
         <nav>
             <ul>
                 <li>
-                    <a href="">Home</a>
+                    <a href="index.php">Home</a>
                 </li>
                 <li>
                     <a href="#">Broken Chains</a>
@@ -28,16 +28,16 @@
                     <a href="#">Leaderboard</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="about">About</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="contact">Contact</a>
                 </li>
             </ul>
         </nav>
 
         <div class="log-buttons">
-            <a href="#">Log In</a>
-            <a href="#">Sign Up</a>
+            <a href="log-in">Log In</a>
+            <a href="sign-up">Sign Up</a>
         </div>
     </header>
