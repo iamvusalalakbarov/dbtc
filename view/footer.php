@@ -1,7 +1,7 @@
 <footer>
     <div class="footer-top">
         <div class="logo">
-            <a href="index.php">DBTC</a>
+            <a href="home">DBTC</a>
         </div>
 
         <ul>
