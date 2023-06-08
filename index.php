@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+date_default_timezone_set('Asia/Baku');
+
+require_once("./model/connect.php");
+
 require_once("./view/header.php");
 
 if (!isset($_GET["page"])) {
