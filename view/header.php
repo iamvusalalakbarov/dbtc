@@ -13,13 +13,13 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.php">DBTC</a>
+            <a href="home">DBTC</a>
         </div>
 
         <nav>
             <ul>
                 <li>
-                    <a href="index.php">Home</a>
+                    <a href="home">Home</a>
                 </li>
                 <li>
                     <a href="#">Broken Chains</a>
@@ -36,8 +36,15 @@
             </ul>
         </nav>
 
-        <div class="log-buttons">
-            <a href="log-in">Log In</a>
-            <a href="sign-up">Sign Up</a>
-        </div>
+        <?php if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) : ?>
+            <div class="log-buttons">
+                <div class="user-info"><?php echo $_SESSION["username"]; ?></div>
+                <a href="log-out">Log Out</a>
+            </div>
+        <?php else : ?>
+            <div class="log-buttons">
+                <a href="log-in">Log In</a>
+                <a href="sign-up">Sign Up</a>
+            </div>
+        <?php endif; ?>
     </header>

@@ -32,6 +32,13 @@ switch ($_GET["page"]) {
     case "sign-up":
         require_once("./view/sign-up.php");
         break;
+
+    case "log-out":
+        session_destroy();
+        unset($_SESSION['loggedin']);
+        unset($_SESSION['username']);
+        header('Location:log-in');
+        break;
 }
 
 require_once("./view/footer.php");
