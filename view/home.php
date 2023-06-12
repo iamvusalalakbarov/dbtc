@@ -1,13 +1,15 @@
 <?php
 
-$query = $db->prepare("SELECT * FROM users WHERE username = ?");
-$insert = $query->execute([$_SESSION["username"]]);
-$user = $query->fetch(PDO::FETCH_ASSOC);
-$userID = $user["userID"];
+if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
+    $query = $db->prepare("SELECT * FROM users WHERE username = ?");
+    $insert = $query->execute([$_SESSION["username"]]);
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+    $userID = $user["userID"];
 
-$query = $db->prepare("SELECT * FROM chains WHERE userID = ?");
-$insert = $query->execute([$userID]);
-$chains = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query = $db->prepare("SELECT * FROM chains WHERE userID = ?");
+    $insert = $query->execute([$userID]);
+    $chains = $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 
