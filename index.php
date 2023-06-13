@@ -39,6 +39,10 @@ switch ($_GET["page"]) {
         unset($_SESSION['username']);
         header('Location:log-in');
         break;
+    
+    case "broken-chains":
+        require_once("./view/broken-chains.php");
+        break;
 }
 
 require_once("./view/footer.php");
