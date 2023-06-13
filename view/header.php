@@ -22,10 +22,10 @@
                     <a href="home">Home</a>
                 </li>
                 <li>
-                    <a href="#">Broken Chains</a>
+                    <a href="broken-chains">Broken Chains</a>
                 </li>
                 <li>
-                    <a href="#">Leaderboard</a>
+                    <a href="leaderboard">Leaderboard</a>
                 </li>
                 <li>
                     <a href="about">About</a>
