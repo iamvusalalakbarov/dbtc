@@ -38,19 +38,20 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
             <form method="POST">
                 <table>
                     <tr>
-                        <td>Chain Name</td>
+                        <th>Chain Name</th>
                         <?php
                         $date = new DateTime();
                         $date->sub(new DateInterval("P10D"));
                         ?>
                         <?php for ($i = 10; $i > 0; $i--) : ?>
-                            <td>
+                            <th class="date">
                                 <?php $date->add(new DateInterval("P1D")); ?>
                                 <div class="month"><?php echo $date->format("F"); ?></div>
                                 <div class="day"><?php echo $date->format("d"); ?></div>
-                            </td>
+                            </th>
                         <?php endfor; ?>
-                        <td>Length</td>
+                        <th>Length</th>
+                        <th>Deletion</th>
                     </tr>
                     <?php foreach ($activeChains as $chain) : ?>
                         <tr>
@@ -64,10 +65,10 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
                             <?php for ($i = 9; $i > 0; $i--) : ?>
                                 <td>
                                     <?php $date->add(new DateInterval("P1D")); ?>
-                                    <span <?php echo ($chainDate >= $date) ? "class='crossed'" : ""; ?>></span>
+                                    <label <?php echo ($chainDate >= $date) ? "class='crossed'" : ""; ?>></label>
                                 </td>
                             <?php endfor; ?>
-                            <td>
+                            <td class="last-day">
                                 <?php $date->add(new DateInterval("P1D")); ?>
                                 <label <?php echo ($chainDate >= $date) ? "class='crossed'" : ""; ?>>
                                     <input type="checkbox" name="">
@@ -77,7 +78,7 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
                             <td>
                                 <form method="POST">
                                     <input type="hidden" name="delete" value="<?php echo $chain["chainID"]; ?>">
-                                    <button type="submit">Delete</button>
+                                    <button type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -90,7 +91,7 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
             <p>You don't have any active chains yet. Create new by clicking the link below.</p>
         <?php endif; ?>
 
-        <a href="create-chain">Create Chain</a>
+        <a href="create-chain" class="create-chain">Create New Chain</a>
     </main>
 
 <?php endif; ?>

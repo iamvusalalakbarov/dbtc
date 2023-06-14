@@ -139,6 +139,96 @@ body {
       }
     }
 
+    &.chains {
+      table {
+        border: 2px solid $myBlue;
+        border-collapse: collapse;
+        margin-bottom: 8px;
+
+        tr,
+        tr > td,
+        th {
+          border: 1px solid $myBlue;
+        }
+
+        tr {
+          td,
+          th {
+            text-align: center;
+            padding: 8px 16px;
+          }
+
+          th {
+            color: #fff;
+            border-color: #fff;
+            background: $myBlue;
+
+            &.date {
+              .month {
+                font-size: 12px;
+              }
+
+              .day {
+                font-size: 20px;
+              }
+            }
+          }
+
+          td {
+            font-size: 18px;
+            font-weight: 700;
+            color: $myBlue;
+            position: relative;
+
+            &.last-day label {
+              cursor: pointer;
+            }
+
+            label {
+              display: block;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+
+              &.crossed {
+                background: url("../img/cross-blue.png") no-repeat
+                  center/contain;
+                background-size: 60%;
+              }
+
+              input {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      p {
+        max-width: 320px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 24px;
+      }
+
+      a.create-chain {
+        display: block;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-align: center;
+        color: #fff;
+        background-color: $myBlue;
+        margin-top: 4px;
+        transition: 200ms background-color ease-in;
+
+        &:hover {
+          background: darken($myBlue, 8);
+        }
+      }
+    }
+
     &.log-in,
     &.sign-up {
       h3 {
@@ -215,6 +305,11 @@ body {
           line-height: 20px;
         }
       }
+    }
+
+    h1 {
+      text-align: center;
+      color: $myBlue;
     }
 
     button {

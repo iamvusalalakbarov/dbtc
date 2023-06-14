@@ -112,6 +112,75 @@ body main.home a:hover {
   color: #fff;
   background: #285680;
 }
+body main.chains table {
+  border: 2px solid #285680;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+body main.chains table tr,
+body main.chains table tr > td,
+body main.chains table th {
+  border: 1px solid #285680;
+}
+body main.chains table tr td,
+body main.chains table tr th {
+  text-align: center;
+  padding: 8px 16px;
+}
+body main.chains table tr th {
+  color: #fff;
+  border-color: #fff;
+  background: #285680;
+}
+body main.chains table tr th.date .month {
+  font-size: 12px;
+}
+body main.chains table tr th.date .day {
+  font-size: 20px;
+}
+body main.chains table tr td {
+  font-size: 18px;
+  font-weight: 700;
+  color: #285680;
+  position: relative;
+}
+body main.chains table tr td.last-day label {
+  cursor: pointer;
+}
+body main.chains table tr td label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body main.chains table tr td label.crossed {
+  background: url("../img/cross-blue.png") no-repeat center/contain;
+  background-size: 60%;
+}
+body main.chains table tr td label input {
+  display: none;
+}
+body main.chains p {
+  max-width: 320px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+}
+body main.chains a.create-chain {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  background-color: #285680;
+  margin-top: 4px;
+  transition: 200ms background-color ease-in;
+}
+body main.chains a.create-chain:hover {
+  background: #1e4161;
+}
 body main.log-in h3, body main.sign-up h3 {
   font-size: 24px;
   color: #285680;
@@ -169,6 +238,10 @@ body main.about div {
 }
 body main.about div p {
   line-height: 20px;
+}
+body main h1 {
+  text-align: center;
+  color: #285680;
 }
 body main button {
   display: block;
