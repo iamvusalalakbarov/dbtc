@@ -47,6 +47,10 @@ switch ($_GET["page"]) {
     case "leaderboard":
         require_once("./view/leaderboard.php");
         break;
+
+    case "create-chain":
+        require_once("./view/create-chain.php");
+        break;
 }
 
 require_once("./view/footer.php");
