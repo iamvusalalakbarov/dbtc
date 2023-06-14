@@ -23,6 +23,10 @@ if (isset($_POST["delete"])) {
     header("Location:home");
 }
 
+if (isset($_POST["submit"])) {
+    print_r($_POST["checkboxes"]);
+}
+
 ?>
 
 <?php if (!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"]) : ?>
@@ -77,21 +81,27 @@ if (isset($_POST["delete"])) {
                             ?>
                             <?php for ($i = 9; $i > 0; $i--) : ?>
                                 <td>
-                                    <?php $date->add(new DateInterval("P1D")); ?>
-                                    <label <?php echo (($startDate <= $date) && ($date <= $currentDate)) ? "class='crossed'" : ""; ?>></label>
+                                    <?php
+                                    $date->add(new DateInterval("P1D"));
+                                    $isCrossed = (($startDate <= $date) && ($date <= $currentDate));
+                                    ?>
+                                    <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>></label>
                                 </td>
                             <?php endfor; ?>
                             <td class="last-day">
-                                <?php $date->add(new DateInterval("P1D")); ?>
-                                <label <?php echo (($startDate <= $date) && ($date <= $currentDate)) ? "class='crossed'" : ""; ?>>
-                                    <input type="checkbox" name="">
+                                <?php
+                                $date->add(new DateInterval("P1D"));
+                                $isCrossed = (($startDate <= $date) && ($date <= $currentDate));
+                                ?>
+                                <label id="last-day-label" <?php echo $isCrossed ? "class='crossed'" : ""; ?>>
+                                    <input type="checkbox" name="checkboxes[]" onclick="toggleLabel()">
                                 </label>
                             </td>
                             <td><?php echo $chain["length"]; ?></td>
                             <td>
                                 <form method="POST">
                                     <input type="hidden" name="delete" value="<?php echo $chain["chainID"]; ?>">
-                                    <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="delete"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -108,3 +118,10 @@ if (isset($_POST["delete"])) {
     </main>
 
 <?php endif; ?>
+
+<script>
+    function toggleLabel() {
+        const label = document.getElementById("last-day-label");
+        label.classList.toggle("crossed");
+    }
+</script>
