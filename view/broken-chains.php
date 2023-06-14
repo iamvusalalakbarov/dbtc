@@ -37,9 +37,9 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
         <?php if (count($brokenChains) > 0) : ?>
             <table>
                 <tr>
-                    <td>Chain Name</td>
-                    <td>Start Date</td>
-                    <td>Length</td>
+                    <th>Chain Name</th>
+                    <th>Start Date</th>
+                    <th>Length</th>
                 </tr>
                 <?php foreach ($brokenChains as $chain) : ?>
                     <tr>
