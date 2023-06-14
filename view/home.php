@@ -59,18 +59,20 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
                             <?php
                             $date = new DateTime();
                             $date->sub(new DateInterval("P10D"));
-                            $chainDate = new DateTime($chain["startDate"]);
-                            $chainDate->add(new DateInterval("P{$chain["length"]}D"));
+                            $currentDate = new DateTime($chain["startDate"]);
+                            $currentDate->add(new DateInterval("P{$chain["length"]}D"));
+                            $startDate = new DateTime($chain["startDate"]);
+                            $isCrossed = ($startDate <= $date) && ($date <= $currentDate);
                             ?>
                             <?php for ($i = 9; $i > 0; $i--) : ?>
                                 <td>
                                     <?php $date->add(new DateInterval("P1D")); ?>
-                                    <label <?php echo ($chainDate >= $date) ? "class='crossed'" : ""; ?>></label>
+                                    <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>></label>
                                 </td>
                             <?php endfor; ?>
                             <td class="last-day">
                                 <?php $date->add(new DateInterval("P1D")); ?>
-                                <label <?php echo ($chainDate >= $date) ? "class='crossed'" : ""; ?>>
+                                <label>
                                     <input type="checkbox" name="">
                                 </label>
                             </td>
@@ -91,7 +93,7 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
             <p>You don't have any active chains yet. Create new by clicking the link below.</p>
         <?php endif; ?>
 
-        <a href="create-chain" class="create-chain">Create New Chain</a>
+        <a href="create-chain" class="create-chain-link">Create New Chain</a>
     </main>
 
 <?php endif; ?>
