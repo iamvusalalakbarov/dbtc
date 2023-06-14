@@ -62,17 +62,16 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
                             $currentDate = new DateTime($chain["startDate"]);
                             $currentDate->add(new DateInterval("P{$chain["length"]}D"));
                             $startDate = new DateTime($chain["startDate"]);
-                            $isCrossed = ($startDate <= $date) && ($date <= $currentDate);
                             ?>
                             <?php for ($i = 9; $i > 0; $i--) : ?>
                                 <td>
                                     <?php $date->add(new DateInterval("P1D")); ?>
-                                    <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>></label>
+                                    <label <?php echo (($startDate <= $date) && ($date <= $currentDate)) ? "class='crossed'" : ""; ?>></label>
                                 </td>
                             <?php endfor; ?>
                             <td class="last-day">
                                 <?php $date->add(new DateInterval("P1D")); ?>
-                                <label>
+                                <label <?php echo (($startDate <= $date) && ($date <= $currentDate)) ? "class='crossed'" : ""; ?>>
                                     <input type="checkbox" name="">
                                 </label>
                             </td>
