@@ -11,6 +11,18 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
     $brokenChains = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+if (isset($_POST["delete"])) {
+    $id = $_POST["delete"];
+
+    $query = $db->prepare(
+        "DELETE FROM chains
+        WHERE chainID = ?"
+    );
+    $delete = $query->execute([$id]);
+
+    header("Location:home");
+}
+
 ?>
 
 <?php if (!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"]) : ?>
@@ -40,15 +52,24 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
                     <th>Chain Name</th>
                     <th>Start Date</th>
                     <th>Length</th>
+                    <th>Deletion</th>
                 </tr>
                 <?php foreach ($brokenChains as $chain) : ?>
                     <tr>
                         <td><?php echo $chain["chainName"]; ?></td>
                         <td><?php echo $chain["startDate"]; ?></td>
                         <td><?php echo $chain["length"]; ?></td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="delete" value="<?php echo $chain["chainID"]; ?>">
+                                <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
+        <?php else : ?>
+            <p>You don't have any broken chains.</p>
         <?php endif; ?>
     </main>
 
