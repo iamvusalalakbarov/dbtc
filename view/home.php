@@ -11,6 +11,18 @@ if (isset($_SESSION["loggedIn"]) && isset($_SESSION["username"])) {
     $activeChains = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+if (isset($_POST["delete"])) {
+    $id = $_POST["delete"];
+
+    $query = $db->prepare(
+        "DELETE FROM chains
+        WHERE chainID = ?"
+    );
+    $delete = $query->execute([$id]);
+
+    header("Location:home");
+}
+
 ?>
 
 <?php if (!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"]) : ?>
