@@ -1,6 +1,13 @@
 <?php
 
-$query = $db->query("SELECT chains.*, users.username FROM chains JOIN users ON chains.userID = users.userID WHERE isPublic = 1 AND length > 0 ORDER BY chains.length DESC");
+$query = $db->query(
+    "SELECT chains.*, users.username FROM chains 
+    JOIN users ON chains.userID = users.userID 
+    WHERE isPublic = 1 
+    AND length > 0 
+    ORDER BY chains.length DESC 
+    LIMIT 10"
+);
 $chains = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
