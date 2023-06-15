@@ -162,6 +162,11 @@ body main.chains table tr td label.crossed {
 body main.chains table tr td label input {
   display: none;
 }
+body main.chains table tr td label button.last-day-button {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
 body main.chains p {
   max-width: 320px;
   font-size: 18px;

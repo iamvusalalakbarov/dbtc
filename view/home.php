@@ -24,7 +24,33 @@ if (isset($_POST["delete"])) {
 }
 
 if (isset($_POST["submit"])) {
-    print_r($_POST["checkboxes"]);
+    $chainID = $_POST["submit"];
+
+    $query = $db->prepare("SELECT * FROM chains WHERE chainID = ?");
+    $query->execute([$chainID]);
+    $chain = $query->fetch(PDO::FETCH_ASSOC);
+
+    $currentDayStatus = !$chain["currentDayStatus"];
+
+    if ($currentDayStatus) {
+        $length = $chain["length"] + 1;
+    } else {
+        $length = $chain["length"] - 1;
+    }
+
+    $query = $db->prepare(
+        "UPDATE chains SET
+        currentDayStatus = ?,
+        length = ?
+        WHERE chainID = ?"
+    );
+    $update = $query->execute([$currentDayStatus, $length, $chainID]);
+
+    if ($update) {
+        header("Location:home");
+    } else {
+        echo "Update is failed.";
+    }
 }
 
 ?>
@@ -51,65 +77,64 @@ if (isset($_POST["submit"])) {
         <h1><?php echo $_SESSION["username"]; ?>'s Chains</h1>
 
         <?php if (count($activeChains) > 0) : ?>
-            <form method="POST">
-                <table>
+            <table>
+                <tr>
+                    <th>Chain Name</th>
+                    <?php
+                    $date = new DateTime();
+                    $date->sub(new DateInterval("P10D"));
+                    ?>
+                    <?php for ($i = 10; $i > 0; $i--) : ?>
+                        <th class="date">
+                            <?php $date->add(new DateInterval("P1D")); ?>
+                            <div class="month"><?php echo $date->format("F"); ?></div>
+                            <div class="day"><?php echo $date->format("d"); ?></div>
+                        </th>
+                    <?php endfor; ?>
+                    <th>Length</th>
+                    <th>Deletion</th>
+                </tr>
+                <?php foreach ($activeChains as $chain) : ?>
                     <tr>
-                        <th>Chain Name</th>
+                        <td><?php echo $chain["chainName"]; ?></td>
                         <?php
                         $date = new DateTime();
                         $date->sub(new DateInterval("P10D"));
+                        $currentDate = new DateTime($chain["startDate"]);
+                        $currentDate->add(new DateInterval("P{$chain["length"]}D"));
+                        $startDate = new DateTime($chain["startDate"]);
                         ?>
-                        <?php for ($i = 10; $i > 0; $i--) : ?>
-                            <th class="date">
-                                <?php $date->add(new DateInterval("P1D")); ?>
-                                <div class="month"><?php echo $date->format("F"); ?></div>
-                                <div class="day"><?php echo $date->format("d"); ?></div>
-                            </th>
-                        <?php endfor; ?>
-                        <th>Length</th>
-                        <th>Deletion</th>
-                    </tr>
-                    <?php foreach ($activeChains as $chain) : ?>
-                        <tr>
-                            <td><?php echo $chain["chainName"]; ?></td>
-                            <?php
-                            $date = new DateTime();
-                            $date->sub(new DateInterval("P10D"));
-                            $currentDate = new DateTime($chain["startDate"]);
-                            $currentDate->add(new DateInterval("P{$chain["length"]}D"));
-                            $startDate = new DateTime($chain["startDate"]);
-                            ?>
-                            <?php for ($i = 9; $i > 0; $i--) : ?>
-                                <td>
-                                    <?php
-                                    $date->add(new DateInterval("P1D"));
-                                    $isCrossed = (($startDate <= $date) && ($date <= $currentDate));
-                                    ?>
-                                    <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>></label>
-                                </td>
-                            <?php endfor; ?>
-                            <td class="last-day">
+                        <?php for ($i = 9; $i > 0; $i--) : ?>
+                            <td>
                                 <?php
                                 $date->add(new DateInterval("P1D"));
                                 $isCrossed = (($startDate <= $date) && ($date <= $currentDate));
                                 ?>
-                                <label id="last-day-label" <?php echo $isCrossed ? "class='crossed'" : ""; ?>>
-                                    <input type="checkbox" name="checkboxes[]" onclick="toggleLabel()">
+                                <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>></label>
+                            </td>
+                        <?php endfor; ?>
+                        <td class="last-day">
+                            <?php
+                            $date->add(new DateInterval("P1D"));
+                            $isCrossed = (($startDate <= $date) && ($date <= $currentDate));
+                            ?>
+                            <form method="POST">
+                                <label <?php echo $isCrossed ? "class='crossed'" : ""; ?>>
+                                    <input type="hidden" name="submit" value="<?php echo $chain["chainID"]; ?>">
+                                    <button type="submit" class="last-day-button"></button>
                                 </label>
-                            </td>
-                            <td><?php echo $chain["length"]; ?></td>
-                            <td>
-                                <form method="POST">
-                                    <input type="hidden" name="delete" value="<?php echo $chain["chainID"]; ?>">
-                                    <button type="delete"><i class="fas fa-trash-alt"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-                <input type="hidden" name="submit" value="1">
-                <button type="submit">Submit Changes</button>
-            </form>
+                            </form>
+                        </td>
+                        <td><?php echo $chain["length"]; ?></td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="delete" value="<?php echo $chain["chainID"]; ?>">
+                                <button type="delete"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         <?php else : ?>
             <p>You don't have any active chains yet. Create new by clicking the link below.</p>
         <?php endif; ?>
@@ -118,10 +143,3 @@ if (isset($_POST["submit"])) {
     </main>
 
 <?php endif; ?>
-
-<script>
-    function toggleLabel() {
-        const label = document.getElementById("last-day-label");
-        label.classList.toggle("crossed");
-    }
-</script>
